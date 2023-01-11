@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-public GameObject bullet;
-public Transform FirePoint;
+
+[SerializeField] public float _Damage;
+[SerializeField] public float _Range;
+[SerializeField] public float _FireRate;
+public Camera FpsCam;
+public ParticleSystem _MuzzleFlash;
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +20,17 @@ public Transform FirePoint;
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetButtonDown("Fire1")){
             Shoot();
         }
     }
 
-    void Shoot(){
-        Instantiate(bullet,FirePoint.position,FirePoint.rotation);
+    public virtual void Shoot(){
+        _MuzzleFlash.Play();
+       RaycastHit Hit;
+
+       if(Physics.Raycast(FpsCam.transform.position,FpsCam.transform.forward,out Hit,_Range)){
+        Debug.Log(Hit.transform.name);
+       }
     }
 }
