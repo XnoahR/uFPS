@@ -15,6 +15,9 @@ public TextMeshProUGUI _SpeedText;
     private float _Zmove;
     Vector3 _MoveDirection;
     Vector3 _CurrentMoveSpeed;
+    private float _DefaultMoveSpeed;
+    private float _LowSPeed;
+    private bool IsStepping = false;
 //=====================================================//
     [Header("Ground")]
     [SerializeField] float _PlayerHeight;
@@ -35,6 +38,8 @@ public TextMeshProUGUI _SpeedText;
         _Rigidbody = GetComponent<Rigidbody>();
         _Rigidbody.freezeRotation = true;
         IsReadytoJump = true;
+        _DefaultMoveSpeed = _MoveSpeed;
+        _LowSPeed = _MoveSpeed - 4;
     }
 
     // Update is called once per frame
@@ -54,6 +59,13 @@ public TextMeshProUGUI _SpeedText;
         else
         _Rigidbody.drag = 0;
 
+        if(IsStepping){
+            _MoveSpeed = _LowSPeed;
+        }
+        else{
+            _MoveSpeed = _DefaultMoveSpeed;
+        }
+
     }
 
 
@@ -71,6 +83,13 @@ public TextMeshProUGUI _SpeedText;
             IsReadytoJump = false;
             Jump();
             Invoke("ResetJump",_JumpCooldown);
+        }
+
+        if((_Xmove != 0 || _Zmove != 0f) && Input.GetKey(KeyCode.LeftShift)){
+            IsStepping = true;
+        }
+        else{
+            IsStepping = false;
         }
     }
     
