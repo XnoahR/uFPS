@@ -6,6 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] float _MouseSens;
     public Transform _PlayerOrientation;
+    public Transform _CharacterBody;
     private float Yrotation;
     private float Xrotation;
     
@@ -32,5 +33,6 @@ public class PlayerCamera : MonoBehaviour
         //Set the Rotation
         transform.rotation = Quaternion.Euler(Xrotation,Yrotation,0);
         _PlayerOrientation.rotation = Quaternion.Euler(0,Yrotation,0);
+        _CharacterBody.rotation = Quaternion.Euler(0,Yrotation,0);
     }
 }
