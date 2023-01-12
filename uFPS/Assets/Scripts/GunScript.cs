@@ -48,8 +48,12 @@ public GameObject _BulletImpact;
         Destroy(ImpactGO,0.5f);
 
         if(Hit.transform.tag == "box"){
+            ObstacleScript _Obstacle = Hit.transform.GetComponent<ObstacleScript>();
+            if(_Obstacle != null){
+                _Obstacle.Damaged(_Damage);
+            }
             if(Hit.rigidbody != null){
-                Hit.rigidbody.AddForce(-Hit.normal * 50f);
+                Hit.rigidbody.AddForce(-Hit.normal * _BulletForce);
             }
         }
        }

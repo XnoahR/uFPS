@@ -5,7 +5,7 @@ using UnityEngine;
 public class AK47 : GunScript
 {
     void Awake() {
-    this._Damage = 25;
+    this._Damage = 35;
         this._Range = 150;
         this._FireRate = 10f;
         this._BulletForce = 20f;

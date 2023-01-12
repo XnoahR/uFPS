@@ -7,7 +7,7 @@ public class Uzi : GunScript
 
   
     void Awake() {
-    this._Damage = 5;
+    this._Damage = 15;
         this._Range = 100;
         this._FireRate = 20;
         this._BulletForce = 10f;
