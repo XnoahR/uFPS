@@ -28,12 +28,7 @@ public class WeaponManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha3)&& Weapons[2].transform.childCount >=1){
             _CurrentIndex = 2;
         }
-        if(Input.GetKeyDown(KeyCode.G) && _CurrentIndex != 2){
-            Rigidbody Crb = Weapons[_CurrentIndex].transform.GetChild(0).transform.GetComponent<Rigidbody>();
-            Crb.AddForce(transform.forward*50f,ForceMode.Impulse);
-            Weapons[_CurrentIndex].transform.DetachChildren();
-            _CurrentIndex++;
-        }
+        
         if(_PreviousIndex != _CurrentIndex){
             SwitchWeapon();
         }
@@ -53,4 +48,6 @@ public class WeaponManager : MonoBehaviour
 
 
     }
+
+    
 }

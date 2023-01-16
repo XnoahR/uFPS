@@ -203,6 +203,7 @@ Transform:
   - {fileID: 4977263084664720}
   - {fileID: 4628190596468080}
   - {fileID: 1692402935137330446}
+  - {fileID: 4728032896312160133}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -276,7 +277,9 @@ MonoBehaviour:
   FpsCam: {fileID: 0}
   _MuzzleFlash: {fileID: 3674720487785386070, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
   _BulletImpact: {fileID: 5571574743195478840, guid: d34f4bc7be861924c88b154b6fea5e14, type: 3}
-  isUsed: 0
+  _GunType: {fileID: 0}
+  _FirePoint: {fileID: 4728032896312160133}
+  _BulletObj: {fileID: 6397029955872725314, guid: 8730b7f46352d374b9450afc7a676d9e, type: 3}
 --- !u!65 &-4707951565231003944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -389,6 +392,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1225488570148793024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4728032896312160133}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4728032896312160133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225488570148793024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.003, z: -0.465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4519716788627816}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2646350970422925636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,19 +432,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 880067329915968853, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 8.165492e+12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 880067329915968853, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 6.75e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 880067329915968853, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 7.1e-44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3674720487785386070, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
       propertyPath: looping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3674720487785386070, guid: 072ad0ddc1aff384f88ab819c264eead, type: 3}
       propertyPath: InitialModule.startSize.scalar

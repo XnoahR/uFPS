@@ -7,6 +7,7 @@ public class GunScript : MonoBehaviour
 [SerializeField] public float _Range;
 [SerializeField] public float _FireRate;
 [SerializeField] public float _BulletForce;
+Collider _WeaponCollider;
 private Rigidbody rb;
 public float _FireCooldown = 0;
 public Camera FpsCam;
@@ -14,6 +15,10 @@ public ParticleSystem _MuzzleFlash;
 public GameObject _BulletImpact;
 private bool isUsed;
 private bool isDropped;
+public Transform _GunType;
+
+public Transform _FirePoint;
+public GameObject _BulletObj;
 
 
     // Start is called before the first frame update
@@ -22,6 +27,7 @@ private bool isDropped;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        _WeaponCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -31,12 +37,14 @@ private bool isDropped;
         if(isUsed)
         {
         isDropped = false;
+        _WeaponCollider.enabled =false;
         rb.isKinematic =true;
         ShotInput();
         }
         else{
         isDropped = true;
         rb.isKinematic = false;
+        _WeaponCollider.enabled =true;
         }
     }
 
@@ -68,5 +76,26 @@ private bool isDropped;
             }
         }
        }
+
+      
+
+
+    }
+
+    void OnCollisionEnter(Collision other) {
+    if(isDropped){
+        if(other.gameObject.CompareTag("Player")){
+            if(_GunType.transform.childCount < 1 ){
+                Debug.Log("OH thats a body!");
+                findParent();
+            }
+        }
+    }
+}
+
+
+    void findParent(){
+        transform.SetParent(_GunType);
+        isDropped = false;
     }
 }
